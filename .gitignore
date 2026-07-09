@@ -1,0 +1,61 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ==========================
+# Conda
+# ==========================
+.env
+.venv/
+conda-meta/
+
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# VS Code
+# ==========================
+.vscode/settings.json
+
+# ==========================
+# Data
+# ==========================
+data/raw/*
+data/interim/*
+data/processed/*
+
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# ==========================
+# Models
+# ==========================
+models/*
+
+!models/.gitkeep
+
+# ==========================
+# Reports
+# ==========================
+reports/figures/*
+reports/tables/*
+
+!reports/figures/.gitkeep
+!reports/tables/.gitkeep
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# OS
+# ==========================
+Thumbs.db
+.DS_Store
