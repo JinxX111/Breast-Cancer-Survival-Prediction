@@ -2,8 +2,7 @@
 
 ---
 
-## Document Information
-### Thông tin tài liệu
+## Document Information | Thông tin tài liệu
 
 | Item | Description |
 |------|-------------|
@@ -57,15 +56,12 @@ Biểu diễn nhóm tuổi của bệnh nhân tại thời điểm được ch�
 ### Research Importance | Ý nghĩa trong nghiên cứu
 
 **English**
-
 Age is one of the strongest prognostic factors in breast cancer. It influences tumor characteristics, treatment strategies, and overall survival outcomes.
 
 **Tiếng Việt**
-
 Tuổi là một trong những yếu tố tiên lượng quan trọng nhất của ung thư vú. Biến này ảnh hưởng đến đặc điểm khối u, phương pháp điều trị và khả năng sống còn của bệnh nhân.
 
 ### Reference | Tài liệu tham khảo
-
 SEER Program Coding Manual (2004–2015).
 
 ---
@@ -86,7 +82,6 @@ Biến này biểu diễn giới tính sinh học của bệnh nhân tại thờ
 | Machine Learning Usage | Predictor Feature |
 
 ### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
-
 - Preserve all valid categories.
 - Encode categorical values before training.
 
@@ -99,7 +94,6 @@ Although breast cancer predominantly occurs in women, male breast cancer represe
 Mặc dù ung thư vú chủ yếu gặp ở nữ giới, ung thư vú ở nam giới vẫn là một nhóm bệnh hiếm nhưng có đặc điểm lâm sàng và sinh học khác biệt.
 
 ### Reference | Tài liệu tham khảo
-
 National Cancer Institute (NCI).
 
 ---
@@ -120,7 +114,6 @@ Biểu diễn chủng tộc của bệnh nhân theo hệ thống phân loại ch
 | Machine Learning Usage (Vai trò trong ML) | Predictor Feature |
 
 ### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
-
 - Standardize race categories.
 - Keep unknown values as a separate category or handle during preprocessing based on the modeling strategy.
 
@@ -133,7 +126,6 @@ Race has been associated with differences in breast cancer incidence, access to 
 Chủng tộc có liên quan đến sự khác biệt về tỷ lệ mắc bệnh, khả năng tiếp cận dịch vụ y tế, đáp ứng điều trị và tiên lượng sống còn.
 
 ### Reference | Tài liệu tham khảo
-
 SEER Race Recode Documentation.
 
 ---
