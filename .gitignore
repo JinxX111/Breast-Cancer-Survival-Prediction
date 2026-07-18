@@ -53,11 +53,9 @@ models/*
 # ==========================
 # Reports
 # ==========================
-reports/figures/*
-reports/tables/*
-
-!reports/figures/.gitkeep
-!reports/tables/.gitkeep
+# Keep generated reports:
+# - figures
+# - tables
 
 # ==========================
 # Logs
@@ -69,3 +67,8 @@ reports/tables/*
 # ==========================
 Thumbs.db
 .DS_Store
+
+# ==========================
+# Generated Results
+# ==========================
+results/
