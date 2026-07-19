@@ -91,15 +91,6 @@ Breast Cancer (Site recode ICD-O-3/WHO 2008)
 
 Diagnosis period: 2004 - 2015
 
-## Target Variable
-
-The prediction target is: Vital Status
-
-Mapping:
-0 → Alive
-
-1 → Dead
-
 ---
 
 # 4. System Architecture
