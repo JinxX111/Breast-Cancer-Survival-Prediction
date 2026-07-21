@@ -345,6 +345,42 @@ National Comprehensive Cancer Network (NCCN).
 
 ---
 
+# 9. Hormone Status | Tình trạng thụ thể nội tiết tổng hợp
+
+### English Description
+
+Represents the combined hormone receptor status derived from ER and PR status indicators.
+
+### Vietnamese Description
+
+Biến này biểu diễn tình trạng thụ thể nội tiết tổng hợp được kết hợp từ kết quả của ER và PR.
+
+| Property (Thuộc tính) | Value (Giá trị) |
+|------------------------|-----------------|
+| Data Type (Kiểu dữ liệu) | Categorical |
+| Example (Ví dụ) | HR_Positive, HR_Negative, HR_Mixed, Unknown |
+| Missing Value (Giá trị thiếu) | Unknown |
+| Machine Learning Usage (Vai trò trong ML) | Predictor Feature |
+
+### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
+
+- Combined logic: Positive if ER+ or PR+, Negative if both ER- and PR-.
+- Encoded via `StringIndexer` in the Spark ML pipeline.
+
+### Research Importance | Ý nghĩa trong nghiên cứu
+
+**English**
+Combined hormone receptor status is a key determinant for endocrine therapy selection and long-term prognosis.
+
+**Tiếng Việt**
+Tình trạng thụ thể nội tiết tổng hợp là yếu tố then chốt quyết định chỉ định điều trị nội tiết và tiên lượng sống còn dài hạn.
+
+### Reference | Tài liệu tham khảo
+
+NCCN Clinical Practice Guidelines in Oncology.
+
+---
+
 ## Summary | Tóm tắt
 
 | Variable | Data Type | Machine Learning Usage |

@@ -25,35 +25,38 @@ Tài liệu này tổng hợp kiểu dữ liệu, chiến lược tiền xử l�
 
 | Variable | Spark Type | ML Type | Encoding | Keep | Model Usage |
 |-----------|------------|---------|----------|------|-------------|
-| Age recode | String | Ordinal | StringIndexer | Yes | Predictor |
+| Age | Double | Numerical | None | Yes | Predictor |
+| Age_Group | String | Ordinal | StringIndexer | No | Not used |
 | Sex | String | Binary | StringIndexer | Yes | Predictor |
-| Race recode | String | Category | StringIndexer | Yes | Predictor |
-| Marital status | String | Category | StringIndexer | Yes | Predictor |
-| CS tumor size | Integer | Numerical | None | Yes | Predictor |
-| Survival months | String → Integer | Numerical | None | Yes | Survival Target |
-| Vital status | String | Binary | StringIndexer | Yes | Classification Target |
-| Grade Recode | String | Ordinal | StringIndexer | Yes | Predictor |
-| ER Status | String | Binary | StringIndexer | Yes | Predictor |
-| PR Status | String | Binary | StringIndexer | Yes | Predictor |
-| AJCC T | String | Ordinal | StringIndexer | Yes | Predictor |
-| AJCC N | String | Ordinal | StringIndexer | Yes | Predictor |
-| AJCC M | String | Binary | StringIndexer | Yes | Predictor |
-| AJCC Stage | String | Ordinal | StringIndexer | Yes | Predictor |
-| Regional Nodes Examined | Integer | Numerical | None | Yes | Predictor |
-| Regional Nodes Positive | Integer | Numerical | None | Yes | Predictor |
-| Sequence Number | String | Category | StringIndexer | Yes | Filter |
-| Patient ID | Integer | Identifier | None | No | Remove before Training |
-| Primary Site | Integer | Category | StringIndexer | Yes | Predictor |
-| Histologic Type | Integer | Category | StringIndexer | Yes | Predictor |
-| Behavior Recode | String | Category | Filter | Yes | Filter |
+| Race | String | Category | StringIndexer | Yes | Predictor |
+| Marital_Status | String | Category | StringIndexer | Yes | Predictor |
+| Tumor_Size | Double | Numerical | None | No | Not used |
+| Tumor_Size_Group | Double | Ordinal | StringIndexer | Yes | Predictor |
+| Grade | String | Ordinal | StringIndexer | Yes | Predictor |
+| AJCC_Stage | String | Ordinal | StringIndexer | Yes | Predictor |
+| AJCC_T | String | Ordinal | StringIndexer | Yes | Predictor |
+| AJCC_N | String | Ordinal | StringIndexer | Yes | Predictor |
+| AJCC_M | String | Binary | StringIndexer | Yes | Predictor |
+| Regional_Nodes_Examined | Integer | Numerical | None | Yes | Predictor |
+| Regional_Nodes_Positive | Integer | Numerical | None | Yes | Predictor |
+| Node_Ratio | Double | Numerical | Engineered | Yes | Predictor |
+| Hormone_Status | String | Category | StringIndexer | Yes | Predictor |
+| Surgery_Primary_Site | String | Category | StringIndexer | Yes | Predictor |
+| Surgery_Other_Regional | String | Category | StringIndexer | Yes | Predictor |
+| Surgery_Radiation_Sequence | String | Category | StringIndexer | Yes | Predictor |
+| Radiation | String | Category | StringIndexer | Yes | Predictor |
+| Chemotherapy | String | Category | StringIndexer | Yes | Predictor |
+| Histologic_Type | String | Category | StringIndexer | Yes | Predictor |
 | Laterality | String | Category | StringIndexer | Yes | Predictor |
-| Diagnostic Confirmation | String | Category | StringIndexer | Yes | Predictor |
-| Lymph-vascular Invasion | String | Category | StringIndexer | Yes | Predictor |
-| Surgery Primary Site | Integer | Category | StringIndexer | Yes | Predictor |
-| Surgery Other Region | Integer | Category | StringIndexer | Yes | Predictor |
-| Surgery/Radiation Sequence | String | Category | StringIndexer | Yes | Predictor |
-| Radiation Recode | String | Category | StringIndexer | Yes | Predictor |
-| Chemotherapy Recode | String | Binary | StringIndexer | Yes | Predictor |
+| Diagnostic_Confirmation | String | Category | StringIndexer | Yes | Predictor |
+| Sequence_Number | String | Category | StringIndexer | Yes | Filter |
+| label | Double | Binary | StringIndexer | Yes | Classification Target |
+| weight | Double | Numerical | None | Yes | Model Weight |
+| *_indexed | Double | Numerical | Pipeline Internal | Yes | Internal Feature |
+| features | Vector | Vector | VectorAssembler | Yes | Model Input |
+| rawPrediction | Vector | Vector | Spark Output | Yes | Raw Score |
+| probability | Vector | Vector | Spark Output | Yes | Class Probability |
+| prediction | Double | Binary | Spark Output | Yes | Final Prediction |
 
 ---
 
@@ -70,17 +73,22 @@ Tài liệu này tổng hợp kiểu dữ liệu, chiến lược tiền xử l�
 
 ---
 
-# Machine Learning Pipeline |  Quy trình xử lý dữ liệu
+# Machine Learning Pipeline | Quy trình xử lý dữ liệu
 
-Raw CSV
 
-↓
-
-Load using Spark
+SEER Raw CSV Dataset
 
 ↓
 
-Schema Validation
+Load Dataset using Apache Spark
+
+↓
+
+Schema Validation & Data Exploration
+
+↓
+
+SEER Special Code Detection and Cleaning
 
 ↓
 
@@ -88,36 +96,67 @@ Missing Value Handling
 
 ↓
 
-Special Code Processing
+Data Type Conversion
 
 ↓
 
-Type Conversion
+Feature Selection
 
 ↓
 
-Categorical Encoding
+Target Variable Creation
+(Vital_Status → label)
+
+↓
+
+Train/Test Split
+
+↓
+
+Categorical Feature Encoding
+
+(StringIndexer + OneHotEncoder)
 
 ↓
 
 Feature Vector Assembly
 
+(VectorAssembler)
+
 ↓
 
 Model Training
 
+(Random Forest / Logistic Regression / GBT)
+
 ↓
 
-Evaluation
+Model Evaluation
+
+(Accuracy, Precision, Recall, F1-score, ROC-AUC)
+
+↓
+
+Model Explainability & Error Analysis
+
+(Feature Importance, Misclassified Cases, Clinical Interpretation)
 
 ---
 
 # Notes | Ghi chú
 
-- Patient ID is only used for record identification.
-- Survival Months is reserved for survival analysis.
-- Vital Status is used as the classification target.
-- Final preprocessing decisions may change after Exploratory Data Analysis (EDA).
+- Patient ID is used only for record identification and is removed before model training.
+
+- Vital Status is transformed into the binary classification target:
+  Alive = 0, Dead = 1.
+
+- Survival Months is retained as a survival-related variable and is not used as a predictor in the classification model.
+
+- Missing values and SEER special codes are handled during preprocessing.
+
+- Feature engineering and preprocessing decisions are finalized after Exploratory Data Analys(EDA).
+
+- Model input consists of the final feature vector generated by Spark ML Pipeline.
 
 ---
 
@@ -126,3 +165,4 @@ Evaluation
 | Version | Date | Description |
 |----------|------|-------------|
 | 1.0 | July 2026 | Initial documentation created. |
+| 1.1 | July 2026 | Updated according to final Spark ML preprocessing pipeline. |

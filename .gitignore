@@ -71,4 +71,5 @@ Thumbs.db
 # ==========================
 # Generated Results
 # ==========================
-results/
+results/*
+!results/.gitkeep

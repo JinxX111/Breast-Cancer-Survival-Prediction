@@ -310,6 +310,83 @@ AJCC TNM Classification.
 
 ---
 
+# 8. Regional Node Ratio | Tỷ lệ hạch vùng dương tính
+
+### English Description
+
+Represents the ratio of positive regional lymph nodes to the total number of regional lymph nodes examined.
+
+### Vietnamese Description
+
+Biến này biểu diễn tỷ lệ giữa số hạch vùng dương tính và tổng số hạch vùng được kiểm tra giải phẫu bệnh.
+
+| Property (Thuộc tính) | Value (Giá trị) |
+|------------------------|-----------------|
+| Data Type (Kiểu dữ liệu) | Numerical |
+| Example (Ví dụ) | 0.0, 0.25, 0.75, 1.0 |
+| Missing Value (Giá trị thiếu) | NULL (when examined nodes = 0) |
+| Machine Learning Usage (Vai trò trong ML) | Predictor Feature |
+
+### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
+
+- Calculated formula: `Regional_Nodes_Positive` / `Regional_Nodes_Examined`.
+- Bounded between 0.0 and 1.0.
+
+### Research Importance | Ý nghĩa trong nghiên cứu
+
+**English**
+Node ratio provides a normalized metric for nodal tumor burden, adjusting for surgical sampling variation.
+
+**Tiếng Việt**
+
+Tỷ lệ hạch cung cấp chỉ số chuẩn hóa về gánh nặng di căn hạch, loại bỏ sai lệch do số lượng hạch được nạo vét khác nhau giữa các ca phẫu thuật.
+
+### Reference | Tài liệu tham khảo
+
+AJCC Cancer Staging Manual.
+
+---
+
+# 9. Class Weight | Trọng số điều chỉnh mẫu
+
+### English Description
+
+Calculated weight assigned to each observation to handle target class imbalance during model training.
+
+### Vietnamese Description
+
+Trọng số được tính toán cho từng quan sát nhằm xử lý tình trạng mất cân bằng dữ liệu của biến mục tiêu trong quá trình huấn luyện mô hình.
+
+| Property | Value |
+|------------------------|-----------------|
+| Data Type | Numerical |
+| Exampl | 0.65, 2.15 |
+| Missing Value | None |
+| Machine Learning Usage | Training Weight Column |
+
+### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
+
+- Calculated based on the class distribution of the training dataset.
+- Higher weights are assigned to minority class samples.
+- Used through Spark ML `weightCol` parameter during model training.
+- Applied to tree-based models such as GBT Classifier.
+
+### Research Importance | Ý nghĩa trong nghiên cứu
+
+**English**
+Class weighting helps reduce prediction bias toward the majority class in imbalanced classification problems.
+By assigning higher importance to minority class samples, the model can better learn patterns associated with patient mortality.
+
+**Tiếng Việt**
+Class Weight giúp giảm sự thiên lệch của mô hình về lớp chiếm đa số trong bài toán phân loại mất cân bằng.
+
+Việc tăng trọng số cho các mẫu thuộc lớp thiểu số giúp mô hình học tốt hơn các đặc điểm liên quan đến nguy cơ tử vong của bệnh nhân.
+
+### Reference | Tài liệu tham khảo
+Apache Spark MLlib Documentation.
+
+---
+
 ## Revision History | Lịch sử cập nhật
 
 | Version | Date | Description |

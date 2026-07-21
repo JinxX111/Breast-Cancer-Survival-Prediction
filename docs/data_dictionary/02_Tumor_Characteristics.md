@@ -423,6 +423,42 @@ SEER Program Coding Manual.
 
 ---
 
+# 11. Tumor Size Group | Phân nhóm kích thước khối u
+
+### English Description
+
+Represents the binned primary tumor size categories derived from `Tumor_Size` based on clinical T-stage cutoffs.
+
+### Vietnamese Description
+
+Biến này biểu diễn nhóm kích thước khối u được phân loại từ `Tumor_Size` dựa trên các ngưỡng phân loại T trong lâm sàng.
+
+| Property (Thuộc tính) | Value (Giá trị) |
+|------------------------|-----------------|
+| Data Type (Kiểu dữ liệu) | Ordinal Categorical |
+| Example (Ví dụ) | <=20mm (T1), 21-50mm (T2), >50mm (T3/T4) |
+| Missing Value (Giá trị thiếu) | Unknown |
+| Machine Learning Usage (Vai trò trong ML) | Predictor Feature |
+
+### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
+
+- Categorized from continuous tumor size values in millimeters.
+- Encoded using `StringIndexer` prior to model training.
+
+### Research Importance | Ý nghĩa trong nghiên cứu
+
+**English**
+Grouping tumor sizes aligns continuous measurement with clinical T-staging standards used in risk stratification.
+
+**Tiếng Việt**
+Phân nhóm kích thước u giúp đồng bộ dữ liệu đo lường liên tục với các tiêu chuẩn phân giai đoạn T trong phân tầng rủi ro lâm sàng.
+
+### Reference | Tài liệu tham khảo
+
+AJCC Cancer Staging Manual.
+
+---
+
 ## Summary | Tóm tắt
 
 | Variable | Data Type | Machine Learning Usage |

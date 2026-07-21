@@ -165,6 +165,42 @@ National Cancer Institute (NCI)
 
 ---
 
+# 5. Age Group | Phân nhóm độ tuổi
+
+### English Description
+
+Represents the binned age category of the patient derived from the continuous age variable for clinical grouping.
+
+### Vietnamese Description
+
+Biến này biểu diễn nhóm tuổi của bệnh nhân được phân chia từ biến tuổi liên tục (`Age`) thành các khoảng ranh giới lâm sàng.
+
+| Property (Thuộc tính) | Value (Giá trị) |
+|------------------------|-----------------|
+| Data Type (Kiểu dữ liệu) | Ordinal Categorical |
+| Example (Ví dụ) | <40, 40-50, 51-60, 61-70, >70 |
+| Missing Value (Giá trị thiếu) | None |
+| Machine Learning Usage (Vai trò trong ML) | Predictor Feature |
+
+### Data Cleaning Notes | Ghi chú tiền xử lý dữ liệu
+
+- Binned directly from `Age` column during preprocessing.
+- Encoded using `StringIndexer` in Spark ML Pipeline.
+
+### Research Importance | Ý nghĩa trong nghiên cứu
+
+**English**
+Age binning helps capture non-linear prognostic risks associated with distinct age brackets in breast cancer progression.
+
+**Tiếng Việt**
+Việc phân nhóm độ tuổi giúp mô hình ghi nhận các mối quan hệ phi tuyến tính về rủi ro tiên lượng theo từng giai đoạn tuổi đời của bệnh nhân.
+
+### Reference | Tài liệu tham khảo
+
+NCCN Breast Cancer Guidelines.
+
+---
+
 ## Summary | Tóm tắt
 
 | Variable | Data Type | Machine Learning Usage |
