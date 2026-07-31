@@ -7,23 +7,29 @@ channels:
 dependencies:
   - python=3.11
   - openjdk=17
+
   - pip
 
+  # Data Processing
   - numpy
   - pandas
+  - scipy
+  - pyarrow
+  - openpyxl
+
+  # Visualization
   - matplotlib
   - seaborn
 
+  # Machine Learning
   - scikit-learn
-  - scipy
 
+  # Notebook
   - jupyterlab
   - notebook
   - ipykernel
 
-  - pyarrow
-  - openpyxl
-
+  # Utilities
   - pyyaml
   - tqdm
 

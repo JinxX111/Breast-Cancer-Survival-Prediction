@@ -122,9 +122,16 @@ To improve predictive capability, several clinically meaningful features were co
   - Inverse class frequency weighting was applied to handle class imbalance.
   - The weight column was used during model training:
 
-```python
-GBTClassifier(weightCol="weight")
+### Feature Summary
 
+| Feature Group | Features Included |
+|---|---|
+| **Demographics** | `Age`, `Sex`, `Race`, `Marital_Status` |
+| **Tumor Characteristics** | `Tumor_Size`, `AJCC_Stage`, `AJCC_T`, `AJCC_N`, `AJCC_M`, `Grade`, `Histologic_Type` |
+| **Lymph Node Status** | `Regional_Nodes_Examined`, `Regional_Nodes_Positive`, `Node_Ratio` |
+| **Biomarkers & Treatment** | `Hormone_Status`, `Surgery_Primary_Site`, `Surgery_Other_Regional`, `Surgery_Radiation_Sequence`, `Radiation`, `Chemotherapy` |
+
+--- 
 
 ## 6. Machine Learning Models
 
@@ -286,8 +293,7 @@ Project_Breast_Cancer_SEER/
 
 ## 11. Future Improvements
 
-- **Survival Analysis:** Implement time-to-event algorithms (e.g., Cox Proportional Hazards, Random Survival Forests) to model survival probabilities over specific time intervals.
-- **Explainable AI (XAI):** Integrate SHAP (SHapley Additive exPlanations) or LIME for instance-level model explanation.
+- **Survival Analysis:** Extend the project with time-to-event survival models (e.g., Cox Proportional Hazards, Random Survival Forests) to estimate survival time and risk over follow-up periods.- **Explainable AI (XAI):** Integrate SHAP (SHapley Additive exPlanations) or LIME for instance-level model explanation.
 - **Advanced Boosting Ensembles:** Explore integration with XGBoost4J-Spark or LightGBM on Spark.
 - **Clinical Web Application:** Deploy a real-time risk assessment dashboard using Streamlit or Flask.
 
@@ -303,4 +309,5 @@ This project successfully establishes a scalable, big-data-ready machine learnin
 
 - **JinxX**
  Data Science & Machine Learning Project
+ 
 Breast Cancer Survival Prediction using Apache Spark MLlib

@@ -1,5 +1,5 @@
 Model,Training_Time
-Logistic Regression,55.75906491279602
-Decision Tree,13.122770547866821
-Random Forest,22.901383876800537
-GBT Classifier,118.61442637443542
+Logistic Regression,54.02805495262146
+Decision Tree,15.085965633392334
+Random Forest,21.394320487976074
+GBT Classifier,82.8922164440155
